@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Patrol : MonoBehaviour
 {
     public Transform[] points;
-    private int destPoints = 0;
+    //private int destPoints = 0;
     private NavMeshAgent agent;
 
     public bool go = false;
@@ -16,10 +16,9 @@ public class Patrol : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.autoBraking = false;
-
+        int r = Random.Range(0, points.Length);
+        agent.SetDestination(points[r].position);
         GoToNextPoint();
-
-        initialDelay = Random.Range(2.0f, 12.0f);
     }
 
     // Update is called once per frame
@@ -29,26 +28,16 @@ public class Patrol : MonoBehaviour
         {
             GoToNextPoint();
         }
-
-        if(!go)
-        {
-            initialDelay -= Time.deltaTime;
-            if (initialDelay <= 0.0f)
-            {
-                go = true;
-                GoToNextPoint();
-            }
-            else return;
-        }
     }
     void GoToNextPoint()
     {
-          if(points.Length == 0)
+        if(points.Length == 0)
             return;
 
-        agent.destination = points[destPoints].position;
+        int r = Random.Range(0, points.Length);
+        agent.SetDestination(points[r].position);
 
-        destPoints = (destPoints + 1) % points.Length;
+        //destPoints = (destPoints + 1) % points.Length;
 
     }
 }
