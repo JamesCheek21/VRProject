@@ -45,12 +45,12 @@ public class Trigger : MonoBehaviour
             {
                 //other.gameObject.GetComponent<Drive>().agent.velocity = Vector3.zero;
                 other.gameObject.GetComponent<Patrol>().agent.Stop();
-				other.gameObject.GetComponent<Animator>().SetBool("isWalking", false);
+				
             }
             else if (lights.state == 2)
             {
                 other.gameObject.GetComponent<Patrol>().agent.Resume();
-				other.gameObject.GetComponent<Animator>().SetBool("isWalking", true);
+			
 			}
         }
     }
