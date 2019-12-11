@@ -8,6 +8,7 @@ public class Patrol : MonoBehaviour
     public Transform[] points;
     //private int destPoints = 0;
     public NavMeshAgent agent;
+	Animator animator;
 
     public bool go = false;
     public float initialDelay;
@@ -15,6 +16,7 @@ public class Patrol : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+		animator = GetComponent<Animator>();
         agent.autoBraking = false;
         int r = Random.Range(0, points.Length);
         agent.SetDestination(points[r].position);
