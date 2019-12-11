@@ -7,7 +7,7 @@ public class Patrol : MonoBehaviour
 {
     public Transform[] points;
     //private int destPoints = 0;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     public bool go = false;
     public float initialDelay;

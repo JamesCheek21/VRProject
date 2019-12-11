@@ -7,6 +7,9 @@ TagManager:
   - Traffic Light
   - Green Light
   - Red Light
+  - car
+  - person
+  - Collision
   layers:
   - Default
   - TransparentFX
@@ -16,10 +19,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Road
+  - Collision
+  - Crossing
+  - TL
   - 
   - 
   - 

@@ -38,7 +38,7 @@ public class TrafficLights : MonoBehaviour
         initialDelay -= Time.deltaTime;
         if (initialDelay < 0)
         {
-            initialDelay = 3.0f;
+            initialDelay = 10.0f;
             LightControl();
             if (state == 1)
                 state++;

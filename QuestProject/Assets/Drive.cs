@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Drive : MonoBehaviour
 {
     public Transform[] points;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     private int destPoints = 0;
     public Rigidbody rb;
     public Transform fwheel, bwheel;
@@ -15,6 +15,7 @@ public class Drive : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        rb = GetComponent<Rigidbody>();
         agent.autoBraking = false;
       
         agent.SetDestination(points[destPoints].position);
@@ -45,8 +46,6 @@ public class Drive : MonoBehaviour
     }
     void RotateWheels() 
     {
-        fwheel = this.gameObject.transform.GetChild(0);
-        bwheel = this.gameObject.transform.GetChild(1);
         fwheel.transform.Rotate(rb.velocity.magnitude * Time.deltaTime, 0, 0);
         bwheel.transform.Rotate(rb.velocity.magnitude * Time.deltaTime, 0, 0);
     }
