@@ -6,6 +6,7 @@ public class Trigger : MonoBehaviour
 {
     TrafficLights lights;
     public bool stopped = false;
+    public List<Drive> cars = new List<Drive>(); 
     // Start is called before the first frame update
     void Start()
     {
@@ -16,19 +17,32 @@ public class Trigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(lights.state == 1)
+        {
+            if(cars.Count != 0)
+            {
+                foreach(Drive d in cars)
+                {
+                    d.agent.Resume();
+                }
+                cars.Clear(); 
+            }
+        }
     }
+
     public void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("shit");
         if (other.gameObject.tag == "car")
         {
+
             //Debug.Log("car");
             if (lights.state == 2)
             {
+                var vehicle = other.gameObject.GetComponent<Drive>();
                 //Debug.Log("Stop");
                 //other.gameObject.GetComponent<Drive>().agent.velocity = Vector3.zero;
-                other.gameObject.GetComponent<Drive>().agent.Stop();
+                vehicle.agent.Stop();
+                cars.Add(vehicle);
                 stopped = true;
             }
             if (lights.state == 1)
@@ -56,7 +70,6 @@ public class Trigger : MonoBehaviour
     }
     public void OnTriggerStay(Collider other)
     {
-        Debug.Log("shit");
         if (other.gameObject.tag == "car")
         {
             Debug.Log("car");
@@ -70,10 +83,17 @@ public class Trigger : MonoBehaviour
         if (other.gameObject.tag == "person")
         {
             Debug.Log("person");
-             if (lights.state == 2)
+            if (lights.state == 2)
             {
                 other.gameObject.GetComponent<Patrol>().agent.Resume();
             }
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "car")
+        {
+           // other.gameObject.GetComponent<Drive>().agent.Resume();
         }
     }
 }
