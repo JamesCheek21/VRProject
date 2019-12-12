@@ -25,7 +25,6 @@ public class Sphere : MonoBehaviour
     {
         obj = GetComponent<NavMeshAgent>();
         stop = GameObject.FindGameObjectWithTag("Collision").GetComponent<Trigger>();
-        Debug.Log("fuck");
         //Debug.Log(stop.stopped);
     }
 
@@ -40,24 +39,22 @@ public class Sphere : MonoBehaviour
         {
             currentHitObject = hit.transform.gameObject;
             currentHitDistance = hit.distance;
-            Debug.Log("stop");
+            //Debug.Log("stop");
             obj.velocity = Vector3.zero;
-            Debug.Log("stop2");
+            //Debug.Log("stop2");
             obj.Stop();
-            Debug.Log("stop3");
+            //Debug.Log("stop3");
         }
         else
         {
             currentHitDistance = maxdist;
             currentHitObject = null;
-            Debug.Log("Shit");
             
             //if (!stop.stopped)
             //{
-            Debug.Log("go");
+            //Debug.Log("go");
             obj.Resume();
             //}
-            Debug.Log("Cunt");
         }
     }
     private void OnDrawGizmosSelected()

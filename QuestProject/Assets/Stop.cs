@@ -21,20 +21,19 @@ public class Stop : MonoBehaviour
     {
         if(other.gameObject.tag == "car" || other.gameObject.tag == "person")
         {
-            Debug.Log("stop");
+            //Debug.Log("stop");
             //other.gameObject.GetComponent<Drive>().agent.velocity = Vector3.zero;
             agent.Stop();
-            Debug.Log("stop2");
+            //Debug.Log("stop2");
         }
     }
     public void OnTriggerExit(Collider other)
     {
-        Debug.Log("Gay");
         if (other.gameObject.tag == "car" || other.gameObject.tag == "person")
         {
-            Debug.Log("go");
+            //Debug.Log("go");
             agent.Resume();
-            Debug.Log("go2");
+            //Debug.Log("go2");
 
         }
     }
@@ -42,10 +41,10 @@ public class Stop : MonoBehaviour
     {
         if (other.gameObject.tag == "car" || other.gameObject.tag == "person")
         {
-            Debug.Log("stop3");
+            //Debug.Log("stop3");
             //other.gameObject.GetComponent<Drive>().agent.velocity = Vector3.zero;
             agent.Stop();
-            Debug.Log("stop4");
+            //Debug.Log("stop4");
         }
     }
 }

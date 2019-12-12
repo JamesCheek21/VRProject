@@ -72,7 +72,7 @@ public class Trigger : MonoBehaviour
     {
         if (other.gameObject.tag == "car")
         {
-            Debug.Log("car");
+            //Debug.Log("car");
             if (lights.state == 1)
             {
                 //Debug.Log("Go");
@@ -82,7 +82,7 @@ public class Trigger : MonoBehaviour
         }
         if (other.gameObject.tag == "person")
         {
-            Debug.Log("person");
+            //Debug.Log("person");
             if (lights.state == 2)
             {
                 other.gameObject.GetComponent<Patrol>().agent.Resume();
